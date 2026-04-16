@@ -74,9 +74,10 @@ function Ticks({
 interface Axes3DProps {
   phase: Phase;
   transitionRef: React.RefObject<number>;
+  formulaLatex?: string;
 }
 
-export function Axes3D({ phase, transitionRef }: Axes3DProps) {
+export function Axes3D({ phase, transitionRef, formulaLatex }: Axes3DProps) {
   const zGroupRef = useRef<THREE.Group>(null);
   const yTicksRef = useRef<THREE.Group>(null);
 
@@ -134,7 +135,11 @@ export function Axes3D({ phase, transitionRef }: Axes3DProps) {
       <Arrowhead position={[0, AXIS_LENGTH, 0]} rotation={[0, 0, 0]} />
       <AxisLabel position={[0, AXIS_LENGTH + 0.5, 0]} latex="X_1" opacity={x1Opacity} />
       <AxisLabel position={[0, AXIS_LENGTH + 0.5, 0]} latex="\lambda(t)" opacity={lambdaOpacity} />
-      <AxisLabel position={[AXIS_LENGTH / 2, -1.2, 0]} latex="\lambda(t,x_1,x_2)=B(t,2,2)\,B(x_1,2,2)\,B(x_2,2,2)" fontSize={12} opacity={lambdaOpacity} />
+      {formulaLatex !== undefined ? (
+        formulaLatex ? <AxisLabel position={[AXIS_LENGTH / 2, -1.2, 0]} latex={formulaLatex} fontSize={12} opacity={lambdaOpacity} /> : null
+      ) : (
+        <AxisLabel position={[AXIS_LENGTH / 2, -1.2, 0]} latex="\lambda(t,x_1,x_2)=B(t,2,2)\,B(x_1,2,2)\,B(x_2,2,2)" fontSize={12} opacity={lambdaOpacity} />
+      )}
       {/* Y-axis ticks fade during transition (X₁ scale no longer applies) */}
       <group ref={yTicksRef}>
         <Ticks axis="y" />
