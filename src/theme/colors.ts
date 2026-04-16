@@ -1,0 +1,17 @@
+export const MANIM = {
+  BACKGROUND: '#1a1a2e',
+  BLUE_E: '#1C758A',
+  BLUE_D: '#29ABCA',
+  BLUE_C: '#58C4DD',
+  BLUE_B: '#9CDCEB',
+  BLUE_A: '#C7E9F1',
+  GREEN_C: '#83C167',
+  YELLOW_C: '#FFFF00',
+  RED_C: '#FC6255',
+  WHITE: '#FFFFFF',
+  GREY_A: '#DDDDDD',
+  GREY_B: '#BBBBBB',
+  GREY_C: '#888888',
+  GREY_D: '#444444',
+  GREY_E: '#222222',
+} as const;
